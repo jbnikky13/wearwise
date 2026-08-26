@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "VESTA — Your Personal Style Guide",
+  title: "WearWise — Your Personal Style Assistant",
   description:
-    "Get personalized outfit suggestions for every occasion, season and mood. Upload your outfit and get AI-powered feedback.",
+    "Discover what to wear for every occasion, season and mood. Get AI-powered outfit suggestions and feedback.",
 };
 
 export default function RootLayout({ children }) {
