@@ -2,61 +2,44 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const occasions = [
   {
     id: "work",
-    number: "01",
     title: "Work",
-    subtitle: "Professional",
-    description: "Polished looks for meetings, offices and important days.",
     icon: "▣",
-    className: "occasion-work",
+    description: "Professional and polished",
   },
   {
     id: "party",
-    number: "02",
     title: "Party",
-    subtitle: "Stand out",
-    description: "Expressive looks designed for nights worth remembering.",
     icon: "✦",
-    className: "occasion-party",
+    description: "Expressive and memorable",
   },
   {
     id: "date",
-    number: "03",
     title: "Date Night",
-    subtitle: "Effortless",
-    description: "Put-together outfits that still feel like you.",
     icon: "♡",
-    className: "occasion-date",
+    description: "Effortless and refined",
   },
   {
     id: "travel",
-    number: "04",
     title: "Travel",
-    subtitle: "Comfort first",
-    description: "Easy combinations that move with your plans.",
     icon: "↗",
-    className: "occasion-travel",
+    description: "Comfortable and practical",
   },
   {
     id: "casual",
-    number: "05",
     title: "Casual",
-    subtitle: "Everyday",
-    description: "Simple combinations for everyday confidence.",
     icon: "○",
-    className: "occasion-casual",
+    description: "Relaxed everyday style",
   },
   {
     id: "evening",
-    number: "06",
     title: "Evening",
-    subtitle: "After dark",
-    description: "Refined styling for dinners and evening plans.",
     icon: "☾",
-    className: "occasion-evening",
+    description: "Refined after-dark looks",
   },
 ];
 
@@ -69,22 +52,60 @@ const styles = [
   "Relaxed",
 ];
 
+const seasons = [
+  "Spring",
+  "Summer",
+  "Autumn",
+  "Winter",
+];
+
+const formalityLevels = [
+  "Relaxed",
+  "Smart Casual",
+  "Formal",
+];
+
+const colors = [
+  "Neutrals",
+  "Earth Tones",
+  "Monochrome",
+  "Pastels",
+  "Bold Colors",
+];
+
 export default function HomePage() {
-  const [selectedOccasion, setSelectedOccasion] = useState(null);
-  const [selectedStyle, setSelectedStyle] = useState("");
-  const [showFinder, setShowFinder] = useState(false);
+  const router = useRouter();
 
-  function selectOccasion(id) {
-    setSelectedOccasion(id);
+  const [occasion, setOccasion] = useState("");
+  const [style, setStyle] = useState("");
+  const [season, setSeason] = useState("");
+  const [formality, setFormality] = useState("");
+  const [color, setColor] = useState("");
 
-    setTimeout(() => {
-      document
-        .getElementById("finder")
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-    }, 50);
+  const [error, setError] = useState("");
+
+  function buildLook() {
+    if (!occasion) {
+      setError("Choose an occasion first.");
+      return;
+    }
+
+    if (!style) {
+      setError("Choose your preferred style.");
+      return;
+    }
+
+    const params = new URLSearchParams({
+      occasion,
+      style,
+      season: season || "Summer",
+      formality: formality || "Smart Casual",
+      color: color || "Neutrals",
+    });
+
+    router.push(
+      `/recommendations?${params.toString()}`
+    );
   }
 
   return (
@@ -102,6 +123,7 @@ export default function HomePage() {
         <div className="ww-nav-links">
           <a href="#discover">Discover</a>
           <a href="#occasions">Occasions</a>
+          <a href="#finder">Style Finder</a>
           <a href="#community">Community</a>
         </div>
 
@@ -130,40 +152,31 @@ export default function HomePage() {
           </h1>
 
           <p>
-            Discover outfits for every occasion, season and mood.
-            Get personalized suggestions, upload your look and
-            see how the WearWise community reacts.
+            Discover outfits designed around your occasion,
+            personal style, season and color preferences.
           </p>
 
           <div className="hero-actions">
 
-            <button
+            <a
+              href="#finder"
               className="primary-button"
-              onClick={() => setShowFinder(true)}
             >
               Find My Outfit
               <span>↗</span>
-            </button>
+            </a>
 
-            <button
+            <a
+              href="#upload"
               className="secondary-button"
-              onClick={() =>
-                document
-                  .getElementById("upload")
-                  ?.scrollIntoView({
-                    behavior: "smooth",
-                  })
-              }
             >
               Rate My Outfit
-            </button>
+            </a>
 
           </div>
 
         </div>
 
-
-        {/* HERO STYLE CARD */}
 
         <div className="hero-visual">
 
@@ -173,7 +186,7 @@ export default function HomePage() {
 
             <div className="fashion-card-top">
               <span>WEARWISE</span>
-              <span>01 / 06</span>
+              <span>STYLE / 01</span>
             </div>
 
             <div className="fashion-person">
@@ -207,7 +220,7 @@ export default function HomePage() {
       </section>
 
 
-      {/* MINI STATS */}
+      {/* QUICK STRIP */}
 
       <section className="quick-strip">
 
@@ -218,17 +231,17 @@ export default function HomePage() {
 
         <div>
           <strong>02</strong>
-          <span>Build your style</span>
+          <span>Define your style</span>
         </div>
 
         <div>
           <strong>03</strong>
-          <span>Get your look</span>
+          <span>Build your look</span>
         </div>
 
         <div>
           <strong>04</strong>
-          <span>Share & improve</span>
+          <span>Make it yours</span>
         </div>
 
       </section>
@@ -249,59 +262,61 @@ export default function HomePage() {
             </span>
 
             <h2>
-              What are you
+              Dress for
               <br />
-              dressing for?
+              the moment.
             </h2>
           </div>
 
           <p>
-            Every occasion deserves its own visual language.
-            Choose your moment and WearWise will build a style
-            direction around it.
+            Different moments call for different
+            styling decisions. Choose yours and let
+            WearWise build the direction.
           </p>
 
         </div>
 
-
-        {/* OCCASIONS */}
 
         <div
           className="occasion-grid"
           id="occasions"
         >
 
-          {occasions.map((occasion) => (
+          {occasions.map((item) => (
 
             <button
-              key={occasion.id}
-              className={`occasion-card ${occasion.className}`}
-              onClick={() =>
-                selectOccasion(occasion.id)
-              }
+              key={item.id}
+              className={`occasion-card occasion-${item.id}`}
+              onClick={() => {
+                setOccasion(item.id);
+
+                document
+                  .getElementById("finder")
+                  ?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+              }}
             >
 
               <div className="occasion-number">
-                {occasion.number}
+                {String(
+                  occasions.indexOf(item) + 1
+                ).padStart(2, "0")}
               </div>
 
               <div className="occasion-symbol">
-                {occasion.icon}
+                {item.icon}
               </div>
 
               <div className="occasion-content">
 
                 <span>
-                  {occasion.subtitle}
+                  {item.description}
                 </span>
 
                 <h3>
-                  {occasion.title}
+                  {item.title}
                 </h3>
-
-                <p>
-                  {occasion.description}
-                </p>
 
               </div>
 
@@ -318,7 +333,7 @@ export default function HomePage() {
       </section>
 
 
-      {/* OUTFIT FINDER */}
+      {/* REAL STYLE FINDER */}
 
       <section
         className="finder-section"
@@ -330,84 +345,56 @@ export default function HomePage() {
           <div className="finder-intro">
 
             <span className="section-label">
-              THE STYLE FINDER
+              WEARWISE ENGINE
             </span>
 
             <h2>
-              Tell us the
+              Build your
               <br />
-              <em>moment.</em>
+              <em>perfect look.</em>
             </h2>
 
             <p>
-              Select an occasion and a style direction.
-              Your personalized outfit recommendations
-              will appear here once the recommendation engine
-              is connected.
+              Tell us about the moment and the style
+              you're going for. WearWise will score
+              different outfit combinations and return
+              the strongest match.
             </p>
+
+            <div className="engine-status">
+              <span></span>
+              Recommendation engine ready
+            </div>
 
           </div>
 
 
           <div className="finder-controls">
 
-            <div className="finder-group">
-
-              <span className="finder-label">
-                01 — OCCASION
-              </span>
-
-              <div className="finder-options">
-
-                {occasions.slice(0, 6).map(
-                  (occasion) => (
-
-                    <button
-                      key={occasion.id}
-                      className={
-                        selectedOccasion === occasion.id
-                          ? "finder-option active"
-                          : "finder-option"
-                      }
-                      onClick={() =>
-                        setSelectedOccasion(
-                          occasion.id
-                        )
-                      }
-                    >
-                      {occasion.title}
-                    </button>
-
-                  )
-                )}
-
-              </div>
-
-            </div>
-
+            {/* OCCASION */}
 
             <div className="finder-group">
 
               <span className="finder-label">
-                02 — STYLE
+                01 — WHAT ARE YOU DRESSING FOR?
               </span>
 
               <div className="finder-options">
 
-                {styles.map((style) => (
+                {occasions.map((item) => (
 
                   <button
-                    key={style}
+                    key={item.id}
                     className={
-                      selectedStyle === style
+                      occasion === item.id
                         ? "finder-option active"
                         : "finder-option"
                     }
                     onClick={() =>
-                      setSelectedStyle(style)
+                      setOccasion(item.id)
                     }
                   >
-                    {style}
+                    {item.title}
                   </button>
 
                 ))}
@@ -417,43 +404,156 @@ export default function HomePage() {
             </div>
 
 
+            {/* STYLE */}
+
+            <div className="finder-group">
+
+              <span className="finder-label">
+                02 — YOUR STYLE
+              </span>
+
+              <div className="finder-options">
+
+                {styles.map((item) => (
+
+                  <button
+                    key={item}
+                    className={
+                      style === item
+                        ? "finder-option active"
+                        : "finder-option"
+                    }
+                    onClick={() =>
+                      setStyle(item)
+                    }
+                  >
+                    {item}
+                  </button>
+
+                ))}
+
+              </div>
+
+            </div>
+
+
+            {/* SEASON */}
+
+            <div className="finder-group">
+
+              <span className="finder-label">
+                03 — SEASON
+              </span>
+
+              <div className="finder-options">
+
+                {seasons.map((item) => (
+
+                  <button
+                    key={item}
+                    className={
+                      season === item
+                        ? "finder-option active"
+                        : "finder-option"
+                    }
+                    onClick={() =>
+                      setSeason(item)
+                    }
+                  >
+                    {item}
+                  </button>
+
+                ))}
+
+              </div>
+
+            </div>
+
+
+            {/* FORMALITY */}
+
+            <div className="finder-group">
+
+              <span className="finder-label">
+                04 — FORMALITY
+              </span>
+
+              <div className="finder-options">
+
+                {formalityLevels.map((item) => (
+
+                  <button
+                    key={item}
+                    className={
+                      formality === item
+                        ? "finder-option active"
+                        : "finder-option"
+                    }
+                    onClick={() =>
+                      setFormality(item)
+                    }
+                  >
+                    {item}
+                  </button>
+
+                ))}
+
+              </div>
+
+            </div>
+
+
+            {/* COLOR */}
+
+            <div className="finder-group">
+
+              <span className="finder-label">
+                05 — COLOR DIRECTION
+              </span>
+
+              <div className="finder-options">
+
+                {colors.map((item) => (
+
+                  <button
+                    key={item}
+                    className={
+                      color === item
+                        ? "finder-option active"
+                        : "finder-option"
+                    }
+                    onClick={() =>
+                      setColor(item)
+                    }
+                  >
+                    {item}
+                  </button>
+
+                ))}
+
+              </div>
+
+            </div>
+
+
+            {error && (
+              <div className="finder-error">
+                {error}
+              </div>
+            )}
+
+
             <button
               className="finder-submit"
-              onClick={() =>
-                setShowFinder(true)
-              }
+              onClick={buildLook}
             >
-              Build My Look
+              Generate My Outfit
               <span>↗</span>
             </button>
 
-            {showFinder && (
-              <div className="finder-result">
-
-                <span>YOUR STYLE DIRECTION</span>
-
-                <strong>
-                  {selectedStyle || "Personalized"}
-                  {" "}
-                  {selectedOccasion
-                    ? `· ${
-                        occasions.find(
-                          (x) =>
-                            x.id ===
-                            selectedOccasion
-                        )?.title
-                      }`
-                    : ""}
-                </strong>
-
-                <p>
-                  Recommendation engine coming next —
-                  this area will display your generated
-                  outfit, item breakdown and alternatives.
-                </p>
-
-              </div>
-            )}
+            <p className="finder-note">
+              No account required to generate your first look.
+            </p>
 
           </div>
 
@@ -491,10 +591,9 @@ export default function HomePage() {
               <h3>Smart Suggestions</h3>
 
               <p>
-                Tell WearWise where you're going,
-                what the weather is like and the style
-                you want. Your recommendation engine
-                handles the rest.
+                WearWise evaluates your occasion,
+                style, season, formality and color
+                direction to build a stronger outfit match.
               </p>
             </div>
 
@@ -511,9 +610,9 @@ export default function HomePage() {
               <h3>AI Outfit Feedback</h3>
 
               <p>
-                Upload what you're wearing and receive
-                constructive feedback on coordination,
-                styling and occasion fit.
+                Upload your outfit to eventually receive
+                structured feedback on coordination,
+                styling and occasion suitability.
               </p>
             </div>
 
@@ -530,9 +629,8 @@ export default function HomePage() {
               <h3>Community Ratings</h3>
 
               <p>
-                Share your outfit with the WearWise
-                community and discover how other people
-                react to your look.
+                Share your look and let the WearWise
+                community help you understand what works.
               </p>
             </div>
 
@@ -568,8 +666,8 @@ export default function HomePage() {
 
             <p>
               Upload your outfit and eventually receive
-              an AI style review, a score and community
-              feedback in one place.
+              an AI style review, score and community
+              feedback.
             </p>
 
             <Link
