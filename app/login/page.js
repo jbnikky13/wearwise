@@ -11,7 +11,6 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -20,7 +19,7 @@ export default function LoginPage() {
 
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   );
 
   async function handleSubmit(event) {
@@ -32,24 +31,19 @@ export default function LoginPage() {
 
     try {
       if (isSignup) {
-        const { data, error } =
-          await supabase.auth.signUp({
-            email,
-            password,
-
-            options: {
-              data: {
-                display_name: displayName,
-              },
-
-              emailRedirectTo:
-                `${window.location.origin}/auth/callback`,
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              display_name: displayName,
             },
-          });
+            emailRedirectTo:
+              `${window.location.origin}/auth/callback`,
+          },
+        });
 
-        if (error) {
-          throw error;
-        }
+        if (error) throw error;
 
         if (data?.session) {
           router.push("/");
@@ -58,7 +52,7 @@ export default function LoginPage() {
         }
 
         setMessage(
-          "Account created. Please check your email to confirm your account."
+          "Account created! Check your email to confirm your account."
         );
       } else {
         const { error } =
@@ -67,17 +61,14 @@ export default function LoginPage() {
             password,
           });
 
-        if (error) {
-          throw error;
-        }
+        if (error) throw error;
 
         router.push("/");
         router.refresh();
       }
     } catch (err) {
       setError(
-        err?.message ||
-          "Something went wrong. Please try again."
+        err?.message || "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
@@ -86,7 +77,6 @@ export default function LoginPage() {
 
   return (
     <main className="login-page">
-
       <div className="login-background">
         <div className="login-orb login-orb-one" />
         <div className="login-orb login-orb-two" />
@@ -95,17 +85,13 @@ export default function LoginPage() {
       <section className="login-shell">
 
         <div className="login-brand">
-          <div className="login-logo">
-            W
-          </div>
-
+          <div className="login-logo">W</div>
           <span>WEARWISE</span>
         </div>
 
         <div className="login-card">
 
           <div className="login-heading">
-
             <span className="login-eyebrow">
               YOUR PERSONAL STYLE SPACE
             </span>
@@ -121,11 +107,9 @@ export default function LoginPage() {
                 ? "Join WearWise and discover a smarter way to dress."
                 : "Sign in to continue your WearWise journey."}
             </p>
-
           </div>
 
           <div className="login-switcher">
-
             <button
               type="button"
               className={
@@ -157,7 +141,6 @@ export default function LoginPage() {
             >
               Create account
             </button>
-
           </div>
 
           <form
@@ -167,7 +150,6 @@ export default function LoginPage() {
 
             {isSignup && (
               <div className="login-field">
-
                 <label htmlFor="displayName">
                   Name
                 </label>
@@ -183,12 +165,10 @@ export default function LoginPage() {
                   autoComplete="name"
                   required
                 />
-
               </div>
             )}
 
             <div className="login-field">
-
               <label htmlFor="email">
                 Email
               </label>
@@ -204,11 +184,9 @@ export default function LoginPage() {
                 autoComplete="email"
                 required
               />
-
             </div>
 
             <div className="login-field">
-
               <label htmlFor="password">
                 Password
               </label>
@@ -229,7 +207,6 @@ export default function LoginPage() {
                 minLength={6}
                 required
               />
-
             </div>
 
             {error && (
@@ -259,14 +236,12 @@ export default function LoginPage() {
           </form>
 
           <div className="login-footer">
-
             <button
               type="button"
               onClick={() => router.push("/")}
             >
               ← Continue without signing in
             </button>
-
           </div>
 
         </div>
@@ -276,7 +251,6 @@ export default function LoginPage() {
         </p>
 
       </section>
-
     </main>
   );
 }
