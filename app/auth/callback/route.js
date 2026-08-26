@@ -17,7 +17,7 @@ export async function GET(request) {
 
     const supabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       {
         cookies: {
           getAll() {
@@ -32,7 +32,7 @@ export async function GET(request) {
                 }
               );
             } catch {
-              // Ignore cookie errors.
+              // Cookie updates can fail during redirects.
             }
           },
         },
@@ -59,8 +59,9 @@ export async function GET(request) {
     return NextResponse.redirect(
       new URL("/", requestUrl.origin)
     );
+
   } catch (error) {
-    console.error("Authentication error:", error);
+    console.error("Authentication callback error:", error);
 
     return NextResponse.redirect(
       new URL(
