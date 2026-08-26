@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "../../lib/supabase-browser";
+import { createBrowserClient } from "@supabase/ssr";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,6 +18,11 @@ export default function LoginPage() {
 
   const isSignup = mode === "signup";
 
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+  );
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -26,20 +31,21 @@ export default function LoginPage() {
     setMessage("");
 
     try {
-      const supabase = createClient();
-
       if (isSignup) {
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            data: {
-              display_name: displayName,
+        const { data, error } =
+          await supabase.auth.signUp({
+            email,
+            password,
+
+            options: {
+              data: {
+                display_name: displayName,
+              },
+
+              emailRedirectTo:
+                `${window.location.origin}/auth/callback`,
             },
-            emailRedirectTo:
-              `${window.location.origin}/auth/callback`,
-          },
-        });
+          });
 
         if (error) {
           throw error;
@@ -82,14 +88,17 @@ export default function LoginPage() {
     <main className="login-page">
 
       <div className="login-background">
-        <div className="login-orb login-orb-one"></div>
-        <div className="login-orb login-orb-two"></div>
+        <div className="login-orb login-orb-one" />
+        <div className="login-orb login-orb-two" />
       </div>
 
       <section className="login-shell">
 
         <div className="login-brand">
-          <div className="login-logo">W</div>
+          <div className="login-logo">
+            W
+          </div>
+
           <span>WEARWISE</span>
         </div>
 
