@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase-browser";
+import { createClient } from "../../lib/supabase-browser";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -13,8 +13,8 @@ export default function LoginPage() {
   const [displayName, setDisplayName] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const isSignup = mode === "signup";
 
@@ -29,10 +29,7 @@ export default function LoginPage() {
       const supabase = createClient();
 
       if (isSignup) {
-        const {
-          data,
-          error: signUpError,
-        } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -44,8 +41,8 @@ export default function LoginPage() {
           },
         });
 
-        if (signUpError) {
-          throw signUpError;
+        if (error) {
+          throw error;
         }
 
         if (data?.session) {
@@ -55,18 +52,17 @@ export default function LoginPage() {
         }
 
         setMessage(
-          "Account created. Check your email to confirm your account."
+          "Account created. Please check your email to confirm your account."
         );
       } else {
-        const {
-          error: signInError,
-        } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+        const { error } =
+          await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
 
-        if (signInError) {
-          throw signInError;
+        if (error) {
+          throw error;
         }
 
         router.push("/");
@@ -84,24 +80,23 @@ export default function LoginPage() {
 
   return (
     <main className="login-page">
+
       <div className="login-background">
-        <div className="login-orb login-orb-one" />
-        <div className="login-orb login-orb-two" />
+        <div className="login-orb login-orb-one"></div>
+        <div className="login-orb login-orb-two"></div>
       </div>
 
       <section className="login-shell">
 
         <div className="login-brand">
-          <div className="login-logo">
-            W
-          </div>
-
+          <div className="login-logo">W</div>
           <span>WEARWISE</span>
         </div>
 
         <div className="login-card">
 
           <div className="login-heading">
+
             <span className="login-eyebrow">
               YOUR PERSONAL STYLE SPACE
             </span>
@@ -117,6 +112,7 @@ export default function LoginPage() {
                 ? "Join WearWise and discover a smarter way to dress."
                 : "Sign in to continue your WearWise journey."}
             </p>
+
           </div>
 
           <div className="login-switcher">
@@ -162,6 +158,7 @@ export default function LoginPage() {
 
             {isSignup && (
               <div className="login-field">
+
                 <label htmlFor="displayName">
                   Name
                 </label>
@@ -170,17 +167,19 @@ export default function LoginPage() {
                   id="displayName"
                   type="text"
                   value={displayName}
-                  onChange={(event) =>
-                    setDisplayName(event.target.value)
+                  onChange={(e) =>
+                    setDisplayName(e.target.value)
                   }
                   placeholder="Your name"
                   autoComplete="name"
                   required
                 />
+
               </div>
             )}
 
             <div className="login-field">
+
               <label htmlFor="email">
                 Email
               </label>
@@ -189,16 +188,18 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 value={email}
-                onChange={(event) =>
-                  setEmail(event.target.value)
+                onChange={(e) =>
+                  setEmail(e.target.value)
                 }
                 placeholder="you@example.com"
                 autoComplete="email"
                 required
               />
+
             </div>
 
             <div className="login-field">
+
               <label htmlFor="password">
                 Password
               </label>
@@ -207,8 +208,8 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 value={password}
-                onChange={(event) =>
-                  setPassword(event.target.value)
+                onChange={(e) =>
+                  setPassword(e.target.value)
                 }
                 placeholder="••••••••"
                 autoComplete={
@@ -219,6 +220,7 @@ export default function LoginPage() {
                 minLength={6}
                 required
               />
+
             </div>
 
             {error && (
@@ -248,12 +250,14 @@ export default function LoginPage() {
           </form>
 
           <div className="login-footer">
+
             <button
               type="button"
               onClick={() => router.push("/")}
             >
               ← Continue without signing in
             </button>
+
           </div>
 
         </div>
@@ -263,6 +267,7 @@ export default function LoginPage() {
         </p>
 
       </section>
+
     </main>
   );
 }
