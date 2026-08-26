@@ -1,5 +1,6 @@
 /* =====================================================
-   WEARWISE GLOBAL CSS
+   WEARWISE
+   Editorial Fashion UI
    No Tailwind required
 ===================================================== */
 
@@ -11,16 +12,10 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
 body {
   margin: 0;
-  padding: 0;
-  min-height: 100%;
-}
-
-body {
-  background: #f6f3ee;
-  color: #171717;
+  background: #f4f1eb;
+  color: #171714;
   font-family:
     Arial,
     Helvetica,
@@ -43,385 +38,953 @@ a {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
-
-/* =====================================================
-   LOGIN PAGE
-===================================================== */
-
-.login-page {
+.wearwise-page {
   min-height: 100vh;
-  position: relative;
   overflow: hidden;
+}
+
+.ww-nav {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  min-height: 78px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
-  padding: 32px 20px;
-
-  background:
-    radial-gradient(
-      circle at 15% 15%,
-      rgba(190, 160, 110, 0.15),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 85% 85%,
-      rgba(120, 100, 80, 0.14),
-      transparent 30%
-    ),
-    #f6f3ee;
+  border-bottom: 1px solid #ddd8cf;
 }
 
-
-/* =====================================================
-   BACKGROUND
-===================================================== */
-
-.login-background {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.login-orb {
-  position: absolute;
-
-  border-radius: 50%;
-
-  filter: blur(80px);
-
-  opacity: 0.35;
-}
-
-.login-orb-one {
-  width: 280px;
-  height: 280px;
-
-  background: #d7c5a9;
-
-  top: -100px;
-  left: -100px;
-}
-
-.login-orb-two {
-  width: 320px;
-  height: 320px;
-
-  background: #b9c0b0;
-
-  right: -100px;
-  bottom: -130px;
-}
-
-
-/* =====================================================
-   LOGIN CONTAINER
-===================================================== */
-
-.login-shell {
-  width: 100%;
-  max-width: 460px;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-
-/* =====================================================
-   BRAND
-===================================================== */
-
-.login-brand {
+.ww-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-
   gap: 10px;
 
-  margin-bottom: 22px;
-
-  font-size: 13px;
-  font-weight: 800;
-
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .18em;
 }
 
-.login-logo {
-  width: 38px;
-  height: 38px;
+.ww-logo-mark {
+  width: 34px;
+  height: 34px;
 
   display: grid;
   place-items: center;
 
-  border-radius: 12px;
+  border-radius: 10px;
 
-  background: #171717;
+  background: #171714;
+  color: white;
 
-  color: #ffffff;
+  font-size: 15px;
+  letter-spacing: 0;
+}
 
-  font-size: 17px;
+.ww-nav-links {
+  display: flex;
+  gap: 34px;
+
+  color: #68655e;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ww-nav-links a:hover {
+  color: #171714;
+}
+
+.ww-login {
+  padding: 10px 17px;
+
+  border: 1px solid #171714;
+  border-radius: 999px;
+
+  font-size: 12px;
   font-weight: 800;
 }
 
 
 /* =====================================================
-   CARD
+   HERO
 ===================================================== */
 
-.login-card {
-  padding: 34px;
+.hero {
+  width: min(1240px, calc(100% - 48px));
+  min-height: 650px;
 
-  border-radius: 28px;
+  margin: 0 auto;
 
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
 
-  background: rgba(255, 255, 255, 0.90);
+  align-items: center;
 
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.09),
-    0 5px 20px rgba(0, 0, 0, 0.04);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  gap: 50px;
 }
 
-
-/* =====================================================
-   HEADING
-===================================================== */
-
-.login-heading {
-  text-align: center;
-
-  margin-bottom: 28px;
+.hero-copy {
+  padding: 70px 0;
 }
 
-.login-eyebrow {
-  display: inline-block;
+.eyebrow,
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 
-  margin-bottom: 12px;
-
-  color: #777777;
+  color: #77736b;
 
   font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: .18em;
+}
+
+.hero h1 {
+  margin: 24px 0 22px;
+
+  font-size: clamp(60px, 8vw, 108px);
+
+  line-height: .86;
+
+  letter-spacing: -.07em;
+
   font-weight: 800;
-
-  letter-spacing: 0.18em;
 }
 
-.login-heading h1 {
-  margin: 0;
-
-  color: #151515;
-
-  font-size: clamp(30px, 7vw, 42px);
-
-  line-height: 1.05;
-
-  letter-spacing: -0.04em;
+.hero h1 em,
+.finder-intro h2 em,
+.method-heading h2 em,
+.upload-copy h2 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
 }
 
-.login-heading p {
-  max-width: 330px;
+.hero-copy > p {
+  max-width: 540px;
 
-  margin: 12px auto 0;
+  color: #68655e;
 
-  color: #777777;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.primary-button,
+.secondary-button,
+.finder-submit,
+.upload-button {
+  border: 0;
+
+  padding: 15px 20px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.primary-button,
+.finder-submit,
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+
+  background: #171714;
+  color: white;
+}
+
+.primary-button span,
+.finder-submit span,
+.upload-button span {
+  font-size: 17px;
+}
+
+.secondary-button {
+  background: transparent;
+
+  border: 1px solid #c9c4ba;
+}
+
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.hero-visual {
+  position: relative;
+
+  width: 100%;
+  max-width: 480px;
+
+  height: 510px;
+
+  justify-self: end;
+}
+
+.hero-card-back {
+  position: absolute;
+
+  width: 78%;
+  height: 82%;
+
+  top: 7%;
+  right: 0;
+
+  border-radius: 180px 180px 18px 18px;
+
+  background: #d8d0c1;
+
+  transform: rotate(6deg);
+}
+
+.hero-fashion-card {
+  position: absolute;
+
+  inset: 0;
+
+  padding: 24px;
+
+  overflow: hidden;
+
+  border-radius: 180px 180px 22px 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #c9c1b2,
+      #e5ded2
+    );
+
+  box-shadow:
+    0 35px 80px rgba(45, 40, 30, .13);
+}
+
+.fashion-card-top {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #514d45;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: .15em;
+}
+
+.fashion-person {
+  position: absolute;
+
+  left: 50%;
+  bottom: -15px;
+
+  width: 250px;
+  height: 430px;
+
+  transform: translateX(-50%);
+}
+
+.person-head {
+  position: absolute;
+
+  width: 92px;
+  height: 110px;
+
+  left: 50%;
+  top: 5px;
+
+  transform: translateX(-50%);
+
+  border-radius: 48% 48% 44% 44%;
+
+  background: #9c7358;
+}
+
+.person-body {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 225px;
+  height: 340px;
+
+  transform: translateX(-50%);
+}
+
+.shirt {
+  position: absolute;
+
+  left: 50%;
+  top: 55px;
+
+  width: 150px;
+  height: 175px;
+
+  transform: translateX(-50%);
+
+  border-radius: 30px 30px 8px 8px;
+
+  background: #f0ece4;
+}
+
+.pants {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 130px;
+  height: 150px;
+
+  transform: translateX(-50%);
+
+  border-radius: 15px 15px 5px 5px;
+
+  background: #363735;
+}
+
+.fashion-card-bottom {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.fashion-card-bottom small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  letter-spacing: .15em;
+}
+
+.fashion-card-bottom strong {
+  font-size: 15px;
+}
+
+.style-score {
+  width: 54px;
+  height: 54px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.72);
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+
+/* =====================================================
+   QUICK STRIP
+===================================================== */
+
+.quick-strip {
+  border-top: 1px solid #ddd8cf;
+  border-bottom: 1px solid #ddd8cf;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.quick-strip div {
+  min-height: 78px;
+
+  padding: 20px 30px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  border-right: 1px solid #ddd8cf;
+}
+
+.quick-strip div:last-child {
+  border-right: 0;
+}
+
+.quick-strip strong {
+  font-size: 10px;
+}
+
+.quick-strip span {
+  color: #77736b;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   DISCOVERY
+===================================================== */
+
+.discovery-section {
+  width: min(1240px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  padding: 130px 0;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr .6fr;
+
+  gap: 80px;
+
+  margin-bottom: 60px;
+}
+
+.section-heading h2 {
+  margin: 20px 0 0;
+
+  font-size: clamp(46px, 6vw, 78px);
+
+  line-height: .9;
+
+  letter-spacing: -.055em;
+}
+
+.section-heading p {
+  align-self: end;
+
+  color: #77736b;
 
   font-size: 14px;
+  line-height: 1.8;
+}
 
+
+/* =====================================================
+   OCCASIONS
+===================================================== */
+
+.occasion-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.occasion-card {
+  min-height: 330px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 24px;
+
+  border: 0;
+
+  border-radius: 24px;
+
+  text-align: left;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.occasion-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 25px 50px rgba(0,0,0,.12);
+}
+
+.occasion-number {
+  position: absolute;
+
+  top: 24px;
+  left: 24px;
+
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.occasion-symbol {
+  position: absolute;
+
+  top: 18px;
+  right: 24px;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.55);
+
+  font-size: 21px;
+}
+
+.occasion-content {
+  position: absolute;
+
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+}
+
+.occasion-content span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: .14em;
+
+  opacity: .65;
+}
+
+.occasion-content h3 {
+  margin: 0 0 8px;
+
+  font-size: 30px;
+
+  letter-spacing: -.04em;
+}
+
+.occasion-content p {
+  max-width: 280px;
+
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.6;
+
+  opacity: .68;
+}
+
+.occasion-arrow {
+  position: absolute;
+
+  right: 24px;
+  bottom: 24px;
+
+  font-size: 20px;
+}
+
+.occasion-work {
+  background: #dedbd2;
+}
+
+.occasion-party {
+  background: #d4b9a7;
+}
+
+.occasion-date {
+  background: #d7cdd1;
+}
+
+.occasion-travel {
+  background: #c8d0c7;
+}
+
+.occasion-casual {
+  background: #d6cdbb;
+}
+
+.occasion-evening {
+  background: #30312e;
+  color: #f7f4ee;
+}
+
+
+/* =====================================================
+   FINDER
+===================================================== */
+
+.finder-section {
+  padding: 0 24px 130px;
+}
+
+.finder-panel {
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  padding: 70px;
+
+  display: grid;
+  grid-template-columns: .75fr 1.25fr;
+
+  gap: 80px;
+
+  border-radius: 30px;
+
+  background: #1b1b18;
+
+  color: #f5f1e9;
+}
+
+.finder-intro h2 {
+  margin: 22px 0;
+
+  font-size: clamp(48px, 6vw, 72px);
+
+  line-height: .9;
+
+  letter-spacing: -.055em;
+}
+
+.finder-intro p {
+  max-width: 390px;
+
+  color: #a9a59c;
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.finder-group {
+  margin-bottom: 35px;
+}
+
+.finder-label {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: #9c988e;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: .16em;
+}
+
+.finder-options {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.finder-option {
+  padding: 11px 14px;
+
+  border: 1px solid #4a4944;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: #dedbd3;
+
+  font-size: 11px;
+}
+
+.finder-option:hover,
+.finder-option.active {
+  border-color: #f4f0e7;
+
+  background: #f4f0e7;
+
+  color: #171714;
+}
+
+.finder-submit {
+  width: 100%;
+
+  margin-top: 10px;
+}
+
+.finder-result {
+  margin-top: 18px;
+
+  padding: 20px;
+
+  border: 1px solid #4a4944;
+
+  border-radius: 18px;
+
+  background: #242420;
+}
+
+.finder-result span {
+  display: block;
+
+  color: #99958c;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: .15em;
+}
+
+.finder-result strong {
+  display: block;
+
+  margin: 7px 0;
+
+  font-size: 18px;
+}
+
+.finder-result p {
+  margin: 0;
+
+  color: #aaa69d;
+
+  font-size: 11px;
   line-height: 1.6;
 }
 
 
 /* =====================================================
-   LOGIN SWITCHER
+   METHOD
 ===================================================== */
 
-.login-switcher {
+.method-section {
+  width: min(1240px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  padding: 40px 0 130px;
+
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+
+  gap: 100px;
+}
+
+.method-heading h2 {
+  margin: 20px 0;
+
+  font-size: clamp(50px, 6vw, 75px);
+
+  line-height: .9;
+
+  letter-spacing: -.055em;
+}
+
+.method-list article {
+  min-height: 145px;
+
+  padding: 28px 0;
+
+  display: grid;
+
+  grid-template-columns: 55px 1fr 30px;
+
+  gap: 20px;
+
+  align-items: start;
+
+  border-top: 1px solid #d5d0c7;
+}
+
+.method-list article:last-child {
+  border-bottom: 1px solid #d5d0c7;
+}
+
+.method-list article > span {
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.method-list h3 {
+  margin: 0 0 10px;
+
+  font-size: 22px;
+
+  letter-spacing: -.03em;
+}
+
+.method-list p {
+  max-width: 560px;
+
+  margin: 0;
+
+  color: #77736b;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+}
+
+.method-list b {
+  font-size: 18px;
+}
+
+
+/* =====================================================
+   UPLOAD
+===================================================== */
+
+.upload-section {
+  padding: 0 24px 100px;
+}
+
+.upload-card {
+  max-width: 1240px;
+
+  min-height: 530px;
+
+  margin: 0 auto;
+
+  padding: 65px;
+
   display: grid;
 
   grid-template-columns: 1fr 1fr;
 
-  gap: 5px;
+  gap: 70px;
 
-  padding: 5px;
+  overflow: hidden;
 
-  margin-bottom: 24px;
+  border-radius: 30px;
 
-  border-radius: 14px;
-
-  background: #efede8;
+  background: #ded8cb;
 }
 
-.login-switch {
-  border: 0;
+.upload-copy {
+  align-self: center;
+}
 
-  padding: 11px 8px;
+.upload-copy h2 {
+  margin: 22px 0;
 
-  border-radius: 10px;
+  font-size: clamp(48px, 6vw, 75px);
 
-  background: transparent;
+  line-height: .88;
 
-  color: #777777;
+  letter-spacing: -.06em;
+}
+
+.upload-copy p {
+  max-width: 430px;
+
+  color: #68645c;
 
   font-size: 13px;
-  font-weight: 700;
+
+  line-height: 1.8;
 }
 
-.login-switch.active {
-  background: #ffffff;
-
-  color: #151515;
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.07);
+.upload-button {
+  margin-top: 20px;
 }
 
+.upload-preview {
+  position: relative;
 
-/* =====================================================
-   FORM
-===================================================== */
+  min-height: 390px;
+}
 
-.login-form {
+.upload-frame {
+  position: absolute;
+
+  inset: 0;
+
   display: flex;
 
   flex-direction: column;
 
-  gap: 18px;
-}
+  align-items: center;
 
-.login-field {
-  display: flex;
-
-  flex-direction: column;
+  justify-content: center;
 
   gap: 8px;
+
+  border: 1px dashed #aaa398;
+
+  border-radius: 190px 190px 22px 22px;
+
+  background: rgba(255,255,255,.25);
 }
 
-.login-field label {
-  color: #333333;
+.upload-plus {
+  width: 58px;
+  height: 58px;
 
-  font-size: 12px;
+  display: grid;
+  place-items: center;
 
-  font-weight: 700;
+  margin-bottom: 10px;
+
+  border-radius: 50%;
+
+  background: #171714;
+
+  color: white;
+
+  font-size: 28px;
 }
 
-.login-field input {
-  width: 100%;
-
-  padding: 14px 15px;
-
-  border: 1px solid #dedbd5;
-
-  border-radius: 13px;
-
-  outline: none;
-
-  background: #faf9f7;
-
-  color: #171717;
-
-  font-size: 14px;
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+.upload-frame strong {
+  font-size: 15px;
 }
 
-.login-field input::placeholder {
-  color: #aaaaaa;
+.upload-frame span {
+  color: #77736b;
+
+  font-size: 10px;
 }
 
-.login-field input:focus {
-  background: #ffffff;
+.rating-pill {
+  position: absolute;
 
-  border-color: #999999;
+  right: -10px;
+  bottom: 35px;
+
+  padding: 15px 20px;
+
+  border-radius: 15px;
+
+  background: #fffdf8;
 
   box-shadow:
-    0 0 0 4px rgba(0, 0, 0, 0.04);
+    0 15px 35px rgba(0,0,0,.12);
 }
 
+.rating-pill span {
+  display: block;
 
-/* =====================================================
-   SUBMIT
-===================================================== */
+  color: #8a867d;
 
-.login-submit {
-  width: 100%;
+  font-size: 8px;
+  font-weight: 900;
 
-  padding: 15px 18px;
-
-  border: 0;
-
-  border-radius: 14px;
-
-  background: #171717;
-
-  color: #ffffff;
-
-  font-size: 14px;
-
-  font-weight: 800;
-
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+  letter-spacing: .15em;
 }
 
-.login-submit:hover {
-  transform: translateY(-1px);
-}
-
-.login-submit:active {
-  transform: translateY(0);
-}
-
-.login-submit:disabled {
-  opacity: 0.55;
-
-  cursor: wait;
-
-  transform: none;
-}
-
-
-/* =====================================================
-   MESSAGES
-===================================================== */
-
-.login-message {
-  padding: 12px 14px;
-
-  border-radius: 12px;
-
-  font-size: 12px;
-
-  line-height: 1.5;
-}
-
-.login-error {
-  border: 1px solid #f1cccc;
-
-  background: #fff0f0;
-
-  color: #a02b2b;
-}
-
-.login-success {
-  border: 1px solid #cce4d1;
-
-  background: #eef8f0;
-
-  color: #28613a;
+.rating-pill strong {
+  font-size: 22px;
 }
 
 
@@ -429,114 +992,213 @@ img {
    FOOTER
 ===================================================== */
 
-.login-footer {
-  margin-top: 22px;
+.ww-footer {
+  width: min(1240px, calc(100% - 48px));
 
-  text-align: center;
-}
+  margin: 0 auto;
 
-.login-footer button {
-  border: 0;
+  min-height: 100px;
 
-  background: transparent;
+  display: flex;
 
-  color: #777777;
+  align-items: center;
 
-  font-size: 12px;
-}
+  justify-content: space-between;
 
-.login-footer button:hover {
-  color: #171717;
-}
+  border-top: 1px solid #d5d0c7;
 
-.login-bottom-text {
-  margin: 18px 0 0;
+  color: #77736b;
 
-  text-align: center;
-
-  color: #999999;
-
-  font-size: 11px;
+  font-size: 10px;
 }
 
 
 /* =====================================================
-   GENERAL WEARWISE BUTTON
+   RESPONSIVE
 ===================================================== */
 
-.wearwise-button {
-  border: 0;
+@media (max-width: 900px) {
 
-  padding: 12px 18px;
-
-  border-radius: 12px;
-
-  background: #171717;
-
-  color: #ffffff;
-
-  font-weight: 700;
-}
-
-.wearwise-button:disabled {
-  opacity: 0.5;
-
-  cursor: not-allowed;
-}
-
-
-/* =====================================================
-   ACCESSIBILITY
-===================================================== */
-
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(23, 23, 23, 0.25);
-
-  outline-offset: 3px;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 520px) {
-
-  .login-page {
-    padding: 20px 14px;
+  .ww-nav-links {
+    display: none;
   }
 
-  .login-card {
-    padding: 25px 20px;
+  .hero {
+    grid-template-columns: 1fr;
 
-    border-radius: 23px;
+    min-height: auto;
+
+    padding: 50px 0 80px;
   }
 
-  .login-heading h1 {
-    font-size: 31px;
+  .hero-copy {
+    padding: 20px 0;
+  }
+
+  .hero-visual {
+    justify-self: center;
+
+    height: 480px;
+  }
+
+  .quick-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-strip div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .occasion-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-heading,
+  .method-section,
+  .finder-panel,
+  .upload-card {
+    grid-template-columns: 1fr;
+  }
+
+  .finder-panel {
+    gap: 45px;
+  }
+
+  .method-section {
+    gap: 45px;
+  }
+
+  .upload-card {
+    gap: 35px;
   }
 
 }
 
 
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
+@media (max-width: 600px) {
 
-@media (prefers-reduced-motion: reduce) {
+  .ww-nav,
+  .hero,
+  .discovery-section,
+  .method-section,
+  .ww-footer {
+    width: min(100% - 28px, 1240px);
+  }
 
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
+  .ww-nav {
+    min-height: 68px;
+  }
 
-    transition-duration: 0.01ms !important;
+  .ww-login {
+    padding: 8px 13px;
+  }
 
-    animation-duration: 0.01ms !important;
+  .hero h1 {
+    font-size: 61px;
+  }
+
+  .hero-copy > p {
+    font-size: 13px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-visual {
+    height: 400px;
+  }
+
+  .fashion-person {
+    transform: translateX(-50%) scale(.82);
+    transform-origin: bottom center;
+  }
+
+  .quick-strip div {
+    min-height: 68px;
+
+    padding: 15px;
+  }
+
+  .quick-strip span {
+    font-size: 10px;
+  }
+
+  .discovery-section {
+    padding: 90px 0;
+  }
+
+  .section-heading {
+    gap: 30px;
+  }
+
+  .section-heading h2 {
+    font-size: 52px;
+  }
+
+  .occasion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .occasion-card {
+    min-height: 280px;
+  }
+
+  .finder-section,
+  .upload-section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .finder-panel {
+    padding: 35px 23px;
+
+    border-radius: 22px;
+  }
+
+  .finder-intro h2 {
+    font-size: 54px;
+  }
+
+  .method-section {
+    padding-bottom: 90px;
+  }
+
+  .method-heading h2 {
+    font-size: 55px;
+  }
+
+  .method-list article {
+    grid-template-columns: 35px 1fr;
+  }
+
+  .method-list article b {
+    display: none;
+  }
+
+  .upload-card {
+    padding: 35px 23px;
+
+    border-radius: 22px;
+  }
+
+  .upload-copy h2 {
+    font-size: 54px;
+  }
+
+  .upload-preview {
+    min-height: 330px;
+  }
+
+  .ww-footer {
+    min-height: 90px;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    padding: 20px 0;
   }
 
 }
