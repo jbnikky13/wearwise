@@ -1,7 +1,7 @@
- /* =========================================================
-   WEARWISE GLOBAL STYLES
+/* =====================================================
+   WEARWISE GLOBAL CSS
    No Tailwind required
-========================================================= */
+===================================================== */
 
 * {
   box-sizing: border-box;
@@ -48,32 +48,40 @@ img {
   display: block;
 }
 
-/* =========================================================
-   WEARWISE LOGIN
-========================================================= */
+
+/* =====================================================
+   LOGIN PAGE
+===================================================== */
 
 .login-page {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 32px 20px;
 
   background:
     radial-gradient(
       circle at 15% 15%,
-      rgba(190, 160, 110, 0.13),
+      rgba(190, 160, 110, 0.15),
       transparent 30%
     ),
     radial-gradient(
       circle at 85% 85%,
-      rgba(120, 100, 80, 0.12),
+      rgba(120, 100, 80, 0.14),
       transparent 30%
     ),
     #f6f3ee;
 }
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
 
 .login-background {
   position: absolute;
@@ -83,15 +91,20 @@ img {
 
 .login-orb {
   position: absolute;
+
   border-radius: 50%;
+
   filter: blur(80px);
+
   opacity: 0.35;
 }
 
 .login-orb-one {
   width: 280px;
   height: 280px;
+
   background: #d7c5a9;
+
   top: -100px;
   left: -100px;
 }
@@ -99,27 +112,44 @@ img {
 .login-orb-two {
   width: 320px;
   height: 320px;
+
   background: #b9c0b0;
-  bottom: -130px;
+
   right: -100px;
+  bottom: -130px;
 }
+
+
+/* =====================================================
+   LOGIN CONTAINER
+===================================================== */
 
 .login-shell {
   width: 100%;
   max-width: 460px;
+
   position: relative;
+
   z-index: 2;
 }
+
+
+/* =====================================================
+   BRAND
+===================================================== */
 
 .login-brand {
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 10px;
+
   margin-bottom: 22px;
 
   font-size: 13px;
   font-weight: 800;
+
   letter-spacing: 0.22em;
 }
 
@@ -127,26 +157,32 @@ img {
   width: 38px;
   height: 38px;
 
-  border-radius: 12px;
-
   display: grid;
   place-items: center;
 
+  border-radius: 12px;
+
   background: #171717;
+
   color: #ffffff;
 
   font-size: 17px;
   font-weight: 800;
 }
 
-.login-card {
-  background: rgba(255, 255, 255, 0.9);
 
-  border: 1px solid rgba(0, 0, 0, 0.08);
+/* =====================================================
+   CARD
+===================================================== */
+
+.login-card {
+  padding: 34px;
 
   border-radius: 28px;
 
-  padding: 34px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  background: rgba(255, 255, 255, 0.90);
 
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.09),
@@ -156,8 +192,14 @@ img {
   -webkit-backdrop-filter: blur(20px);
 }
 
+
+/* =====================================================
+   HEADING
+===================================================== */
+
 .login-heading {
   text-align: center;
+
   margin-bottom: 28px;
 }
 
@@ -166,74 +208,91 @@ img {
 
   margin-bottom: 12px;
 
+  color: #777777;
+
   font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.18em;
 
-  color: #777777;
+  letter-spacing: 0.18em;
 }
 
 .login-heading h1 {
   margin: 0;
 
-  font-size: clamp(30px, 7vw, 42px);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
-
   color: #151515;
+
+  font-size: clamp(30px, 7vw, 42px);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
 }
 
 .login-heading p {
-  margin: 12px auto 0;
-
   max-width: 330px;
+
+  margin: 12px auto 0;
 
   color: #777777;
 
   font-size: 14px;
+
   line-height: 1.6;
 }
 
+
+/* =====================================================
+   LOGIN SWITCHER
+===================================================== */
+
 .login-switcher {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
 
   gap: 5px;
 
   padding: 5px;
 
+  margin-bottom: 24px;
+
   border-radius: 14px;
 
   background: #efede8;
-
-  margin-bottom: 24px;
 }
 
 .login-switch {
   border: 0;
 
-  background: transparent;
+  padding: 11px 8px;
 
   border-radius: 10px;
 
-  padding: 11px 8px;
+  background: transparent;
+
+  color: #777777;
 
   font-size: 13px;
   font-weight: 700;
-
-  color: #777777;
 }
 
 .login-switch.active {
   background: #ffffff;
+
   color: #151515;
 
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.07);
 }
 
+
+/* =====================================================
+   FORM
+===================================================== */
+
 .login-form {
   display: flex;
+
   flex-direction: column;
 
   gap: 18px;
@@ -241,39 +300,41 @@ img {
 
 .login-field {
   display: flex;
+
   flex-direction: column;
 
   gap: 8px;
 }
 
 .login-field label {
-  font-size: 12px;
-  font-weight: 750;
-
   color: #333333;
+
+  font-size: 12px;
+
+  font-weight: 700;
 }
 
 .login-field input {
   width: 100%;
 
-  border: 1px solid #dedbd5;
+  padding: 14px 15px;
 
-  background: #faf9f7;
+  border: 1px solid #dedbd5;
 
   border-radius: 13px;
 
-  padding: 14px 15px;
+  outline: none;
 
-  font-size: 14px;
+  background: #faf9f7;
 
   color: #171717;
 
-  outline: none;
+  font-size: 14px;
 
   transition:
-    border-color 0.2s,
-    box-shadow 0.2s,
-    background 0.2s;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .login-field input::placeholder {
@@ -289,22 +350,31 @@ img {
     0 0 0 4px rgba(0, 0, 0, 0.04);
 }
 
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
 .login-submit {
+  width: 100%;
+
+  padding: 15px 18px;
+
   border: 0;
 
   border-radius: 14px;
 
   background: #171717;
+
   color: #ffffff;
 
-  padding: 15px 18px;
-
   font-size: 14px;
+
   font-weight: 800;
 
   transition:
-    transform 0.2s,
-    opacity 0.2s;
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .login-submit:hover {
@@ -323,10 +393,15 @@ img {
   transform: none;
 }
 
-.login-message {
-  border-radius: 12px;
 
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.login-message {
   padding: 12px 14px;
+
+  border-radius: 12px;
 
   font-size: 12px;
 
@@ -334,20 +409,25 @@ img {
 }
 
 .login-error {
+  border: 1px solid #f1cccc;
+
   background: #fff0f0;
 
   color: #a02b2b;
-
-  border: 1px solid #f1cccc;
 }
 
 .login-success {
+  border: 1px solid #cce4d1;
+
   background: #eef8f0;
 
   color: #28613a;
-
-  border: 1px solid #cce4d1;
 }
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .login-footer {
   margin-top: 22px;
@@ -379,46 +459,17 @@ img {
   font-size: 11px;
 }
 
-/* =========================================================
-   MOBILE LOGIN
-========================================================= */
 
-@media (max-width: 520px) {
-  .login-page {
-    padding: 20px 14px;
-  }
-
-  .login-card {
-    padding: 25px 20px;
-
-    border-radius: 23px;
-  }
-
-  .login-heading h1 {
-    font-size: 31px;
-  }
-}
-
-/* =========================================================
-   GENERAL WEARWISE UTILITIES
-========================================================= */
-
-.wearwise-container {
-  width: min(1180px, calc(100% - 32px));
-
-  margin: 0 auto;
-}
-
-.wearwise-hidden {
-  display: none !important;
-}
+/* =====================================================
+   GENERAL WEARWISE BUTTON
+===================================================== */
 
 .wearwise-button {
   border: 0;
 
-  border-radius: 12px;
-
   padding: 12px 18px;
+
+  border-radius: 12px;
 
   background: #171717;
 
@@ -433,9 +484,10 @@ img {
   cursor: not-allowed;
 }
 
-/* =========================================================
+
+/* =====================================================
    ACCESSIBILITY
-========================================================= */
+===================================================== */
 
 button:focus-visible,
 input:focus-visible,
@@ -447,11 +499,36 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-/* =========================================================
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 520px) {
+
+  .login-page {
+    padding: 20px 14px;
+  }
+
+  .login-card {
+    padding: 25px 20px;
+
+    border-radius: 23px;
+  }
+
+  .login-heading h1 {
+    font-size: 31px;
+  }
+
+}
+
+
+/* =====================================================
    REDUCED MOTION
-========================================================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -461,4 +538,5 @@ a:focus-visible {
 
     animation-duration: 0.01ms !important;
   }
+
 }
