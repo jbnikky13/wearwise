@@ -1,4 +1,5 @@
 "use client";
+import '../catalog/catalog.css';
 import Link from 'next/link';
 import {useMemo,useState} from 'react';
 import {clothingCatalog} from '../../lib/clothing';
